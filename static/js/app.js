@@ -55,7 +55,9 @@ let app = new Vue({
      * Given a cryptocurrency ticket symbol, return the currency's logo
      * image.
      */
-    getCoinImage: function(symbol) {
-    }
+
+     getCoinImage: function(symbol) {
+       return CRYPTOCOMPARE_API_URI + this.coinData[symbol].ImageUrl;
+     }
   }
 });
