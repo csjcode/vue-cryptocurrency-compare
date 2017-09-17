@@ -19,6 +19,9 @@ let app = new Vue({
     coins: [],
     coinData: {}
   },
+  created: function() {
+    this.getCoinData();
+  },
   methods: {
     /**
      * Load up all cryptocurrency data.  This data is used to find what logos
@@ -61,3 +64,12 @@ let app = new Vue({
      }
   }
 });
+
+
+/**
+ * Once the page has been loaded and all of our app stuff is working, we'll
+ * start polling for new cryptocurrency data every minute.
+ */
+setInterval(() => {
+  app.getCoins();
+}, UPDATE_INTERVAL);

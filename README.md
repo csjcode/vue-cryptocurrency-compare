@@ -1,2 +1,4 @@
 # vue-cryptocurrency-compare
-A emo for comparing cryptocurrencies in Vue
+A demo for comparing cryptocurrencies in Vue
+
+Starting out with scaffolding & demo instructions from  https://dzone.com/articles/build-a-cryptocurrency-comparison-site-with-vuejs
