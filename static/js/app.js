@@ -30,8 +30,17 @@ let app = new Vue({
      * Get the top 10 cryptocurrencies by value.  This data is refreshed each 5
      * minutes by the backing API service.
      */
-    getCoins: function() {
-    },
+
+     getCoins: function() {
+       let self = this;
+       axios.get(COINMARKETCAP_API_URI + "/v1/ticker/?limit=10")
+         .then((resp) => {
+           this.coins = resp.data;
+         })
+         .catch((err) => {
+           console.error(err);
+         });
+     },
     /**
      * Given a cryptocurrency ticket symbol, return the currency's logo
      * image.
