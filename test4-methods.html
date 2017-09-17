@@ -1,0 +1,24 @@
+<html>
+  <body>
+    <div id="app">
+      <p>What's your favorite color?</p>
+      <input v-model="color" type="text">
+      <p>Your favorite color is... {{ color }}</p>
+      <input type="button" v-on:click="capitalizeColor" value="Capitalize">
+    </div>
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+      let app = new Vue({
+        el: "#app",
+        data: {
+          color: ''
+        },
+        methods: {
+          capitalizeColor: function() {
+            this.color = this.color.toUpperCase();
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
