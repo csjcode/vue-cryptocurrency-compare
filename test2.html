@@ -1,0 +1,20 @@
+
+<html>
+  <body>
+    <div id="app">
+      <h1>{{ message }}</h1>
+      <p v-if="secretMessage">This is a secret HTML element.</p>
+      <p v-else>Welcome to the website.</p>
+    </div>
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+      let app = new Vue({
+        el: "#app",
+        data: {
+          message: "Hi!",
+          secretMessage: false
+        }
+      });
+    </script>
+  </body>
+</html>
