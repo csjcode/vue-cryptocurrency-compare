@@ -24,8 +24,18 @@ let app = new Vue({
      * Load up all cryptocurrency data.  This data is used to find what logos
      * each currency has, so we can display things in a friendly way.
      */
-    getCoinData: function() {
-    },
+     getCoinData: function() {
+       let self = this;
+       axios.get(CRYPTOCOMPARE_API_URI + "/api/data/coinlist")
+         .then((resp) => {
+           this.coinData = resp.data.Data;
+           this.getCoins();
+         })
+         .catch((err) => {
+           this.getCoins();
+           console.error(err);
+         });
+     },
     /**
      * Get the top 10 cryptocurrencies by value.  This data is refreshed each 5
      * minutes by the backing API service.
