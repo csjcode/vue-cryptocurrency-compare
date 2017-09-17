@@ -7,7 +7,7 @@
     <title>CryptoCompare</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="https://bootswatch.com/simplex/bootstrap.min.css">
-    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="static/css/style.css">
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -25,12 +25,47 @@
       </div>
     </div>
     <div id="app">
+
+
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <td>Rank</td>
+            <td>Name</td>
+            <td>Symbol</td>
+            <td>Price (USD)</td>
+            <td>1H</td>
+            <td>1D</td>
+            <td>1W</td>
+            <td>Market Cap (USD)</td>
+        </thead>
+        <tbody>
+          <tr v-for="coin in coins">
+            <td>{{ coin.rank }}</td>
+            <td><img v-bind:src="getCoinImage(coin.symbol)"> {{ coin.name }}</td>
+            <td>{{ coin.symbol }}</td>
+            <td>{{ coin.price_usd | currency }}</td>
+            <td v-bind:style="getColor(coin.percent_change_1h)">
+              <span v-if="coin.percent_change_1h > 0">+</span>{{ coin.percent_change_1h }}%
+            </td>
+            <td v-bind:style="getColor(coin.percent_change_24h)">
+              <span v-if="coin.percent_change_24h > 0">+</span>{{ coin.percent_change_24h }}%
+            </td>
+            <td v-bind:style="getColor(coin.percent_change_7d)">
+              <span v-if="coin.percent_change_7d > 0">+</span>{{ coin.percent_change_7d }}%
+            </td>
+            <td>{{ coin.market_cap_usd | currency }}</td>
+          </tr>
+        </tbody>
+      </table>
+
+
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/vue"></script>
-    <script src="/static/js/vue2-filters.min.js"></script>
+    <script src="https://unpkg.com/vue@2.4.4/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue2-filters/dist/vue2-filters.min.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="/static/js/app.js"></script>
+    <script src="static/js/app.js"></script>
   </body>
 </html>

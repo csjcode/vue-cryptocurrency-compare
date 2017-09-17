@@ -9,6 +9,7 @@
 let CRYPTOCOMPARE_API_URI = "https://www.cryptocompare.com";
 // The API we're using for grabbing cryptocurrency prices.  The service can be
 // found at: https://coinmarketcap.com/api/
+// https://www.cryptocompare.com/api/data/coinlist
 let COINMARKETCAP_API_URI = "https://api.coinmarketcap.com";
 // The amount of milliseconds (ms) after which we should update our currency
 // charts.
@@ -61,10 +62,13 @@ let app = new Vue({
 
      getCoinImage: function(symbol) {
        return CRYPTOCOMPARE_API_URI + this.coinData[symbol].ImageUrl;
+     },
+
+     getColor: (num) => {
+       return num > 0 ? "color:green" : "color:red";
      }
   }
 });
-
 
 /**
  * Once the page has been loaded and all of our app stuff is working, we'll
