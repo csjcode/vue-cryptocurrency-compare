@@ -1,0 +1,24 @@
+<html>
+  <body>
+    <div id="app">
+      <p>Shopping list</p>
+      <ol>
+        <li v-for="item in shoppingList">{{ item }}</li>
+      </ol>
+    </div>
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+      let app = new Vue({
+        el: "#app",
+        data: {
+          shoppingList: [
+            "milk",
+            "eggs",
+            "steak",
+            "chicken"
+          ]
+        }
+      });
+    </script>
+  </body>
+</html>
