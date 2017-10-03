@@ -18,7 +18,7 @@
     <div class="row">
       <div class="jumbotron col-xs-offset-2 col-xs-8">
         <p>
-          This website indexes the top 10 cryptocurrencies by market cap (how
+          This is a Vue.js demo page which indexes the top 30 cryptocurrencies by market cap (how
           much the sum of all coins is collectively worth), and gives you an easy
           way to compare cryptocurrency performance and rank over the last week.
         </p>

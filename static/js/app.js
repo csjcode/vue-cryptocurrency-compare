@@ -13,6 +13,7 @@ let CRYPTOCOMPARE_API_URI = "https://www.cryptocompare.com";
 let COINMARKETCAP_API_URI = "https://api.coinmarketcap.com";
 // The amount of milliseconds (ms) after which we should update our currency
 // charts.
+// https://api.coinmarketcap.com/v1/ticker/?limit=10
 let UPDATE_INTERVAL = 60 * 1000;
 let app = new Vue({
   el: "#app",
@@ -30,8 +31,9 @@ let app = new Vue({
      */
      getCoinData: function() {
        let self = this;
-       axios.get(CRYPTOCOMPARE_API_URI + "/api/data/coinlist")
+       axios.get("api/data/coinlist.json")
          .then((resp) => {
+           console.log(resp.data.Data);
            this.coinData = resp.data.Data;
            this.getCoins();
          })
@@ -47,7 +49,8 @@ let app = new Vue({
 
      getCoins: function() {
        let self = this;
-       axios.get(COINMARKETCAP_API_URI + "/v1/ticker/?limit=10")
+       axios.get("api/data/ticker.json")
+//       axios.get(COINMARKETCAP_API_URI + "/v1/ticker/?limit=10")
          .then((resp) => {
            this.coins = resp.data;
          })
@@ -61,7 +64,7 @@ let app = new Vue({
      */
 
      getCoinImage: function(symbol) {
-       return CRYPTOCOMPARE_API_URI + this.coinData[symbol].ImageUrl;
+      //  return CRYPTOCOMPARE_API_URI + this.coinData[symbol].ImageUrl;
      },
 
      getColor: (num) => {
